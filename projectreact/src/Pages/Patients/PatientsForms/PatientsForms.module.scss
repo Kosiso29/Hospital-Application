@@ -1,0 +1,226 @@
+.PatientsForms {
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    width: 80vw;
+    left: 10vw;
+    margin-top: 5vh;
+    // vertical-align: 'middle';
+    // height: 90vh;
+    padding-bottom: 150px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    top: 0;
+    transition: 850ms;
+    h1 {
+        background-color: #1F99F2;
+        color: white;
+        padding: 20px 62px;
+        // text-align: center;
+        margin: 0;
+        border-radius: 10px 10px 0 0;
+        font-size: 2rem;
+        img {
+            float: right;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    }
+    form {
+        margin: 0;
+        padding: 0 62px;
+        // overflow: auto;
+        label {
+            font-size: 1.5rem;
+            color: #102A43;
+        }
+        input {
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+            padding: 0 20px;
+            outline: none;
+            border-radius: 10px;
+            box-sizing: border-box;
+            display: block;
+            width: 45%;
+            border: 3px solid #A7A1A1;
+        }
+        select {
+            font-size: 1.5rem;
+            height: 3rem;
+            padding: 0 20px;
+            outline: none;
+            border-radius: 10px;
+            box-sizing: border-box;
+            display: block;
+            width: 45%;
+            border: 3px solid #A7A1A1;
+        }
+        
+        .picture {
+            float: right;
+            display: flex;
+            flex-direction: column;
+            margin-top: 25px;
+            width: 45%;
+            img {
+                border: 3px solid #A7A1A1;
+                border-radius: 10px;
+                box-sizing: border-box;
+                margin-top: 5px;
+                display: block;
+                width: 200px;
+            }
+            button {
+                background-color: transparent;
+                border: 3px solid #F0B429;
+                color: #F0B429;
+                &:hover{
+                    background-color: #f3ca6a;
+                    color: white;
+                }
+            }
+        }      
+    }
+    button{
+        width: 193px;
+        height: 53px;
+        margin-top: 40px;
+        
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        cursor: pointer;
+        // background-image: url('./add.png');
+        // background-repeat: no-repeat;
+        // text-indent: 10px;
+        // background-size: 25px 25px;
+        // background-position-x: 50px;
+        // background-position-y: center;
+
+        color: #FFFFFF;
+        background-color: #F0B429;
+        border-radius: 10px;
+        border-style: none;
+        outline: none;
+        &:hover{
+            background-color: #c29325;
+        }
+    }
+    .telephone{
+        display: inline-block;
+        width: 45%;
+    }
+    .blood{
+        display: inline-block;
+        width: 45%;
+        margin-left: 10%;
+    }
+    .create{
+        margin-left: 62px;
+    }
+}
+
+.PatientsForms.active {
+    top: -300%;
+    transition: 850ms
+}
+
+@media (max-width: 850px) {
+    .PatientsForms{
+        padding-bottom: 50px;
+        h1{
+            padding: 20px 31px;
+        }
+        form{
+            padding: 0 31px;
+            .picture{
+                float: none;
+                width: 100%;
+                text-align: center;
+                img{
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 15px;
+                }
+                button{
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+            input{
+                width: 100%;
+            }
+            select{
+                width: 100%;
+            }
+        }
+        button{
+            margin-left: 31px;
+        }
+        .telephone{
+            display: block;
+            width: 100%;
+        }
+        .blood{
+            display: block;
+            width: 100%;
+            margin-left: 0;
+        }
+        .create{
+            margin-left: 31px;
+        }
+    }
+}
+@media (max-width: 600px) {
+    .PatientsForms{
+        width: 90vw;
+        left: 5vw;
+        h1 {
+            font-size: 1.2rem;
+            img{
+                margin-top: 5px;
+            }
+        }
+        form {
+            label {
+                font-size: 1rem;
+            }
+            input {
+                font-size: 1rem;
+                line-height: 2rem;
+                padding: 0 20px;
+            }
+            select {
+                font-size: 1rem;
+                height: 2.5rem;
+                padding: 0 20px;
+            }
+            .picture{
+                img{
+                    width: 180px;
+                }
+            }
+        }
+        button{
+            width: 133px;
+            height: 43px;
+            font-size: 15px;
+            line-height: 18px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .PatientsForms{
+        form{
+            .picture{
+                img{
+                    width: 150px;
+                }
+            }
+        }
+    }
+}

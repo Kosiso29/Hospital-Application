@@ -1,0 +1,229 @@
+.PatientsForms {
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  width: 80vw;
+  left: 10vw;
+  margin-top: 5vh;
+  padding-bottom: 150px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  top: 0;
+  -webkit-transition: 850ms;
+  transition: 850ms;
+}
+
+.PatientsForms h1 {
+  background-color: #1F99F2;
+  color: white;
+  padding: 20px 62px;
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+  font-size: 2rem;
+}
+
+.PatientsForms h1 img {
+  float: right;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.PatientsForms form {
+  margin: 0;
+  padding: 0 62px;
+}
+
+.PatientsForms form label {
+  font-size: 1.5rem;
+  color: #102A43;
+}
+
+.PatientsForms form input {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  padding: 0 20px;
+  outline: none;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  width: 45%;
+  border: 3px solid #A7A1A1;
+}
+
+.PatientsForms form select {
+  font-size: 1.5rem;
+  height: 3rem;
+  padding: 0 20px;
+  outline: none;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  width: 45%;
+  border: 3px solid #A7A1A1;
+}
+
+.PatientsForms form .picture {
+  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 25px;
+  width: 45%;
+}
+
+.PatientsForms form .picture img {
+  border: 3px solid #A7A1A1;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 5px;
+  display: block;
+  width: 200px;
+}
+
+.PatientsForms form .picture button {
+  background-color: transparent;
+  border: 3px solid #F0B429;
+  color: #F0B429;
+}
+
+.PatientsForms form .picture button:hover {
+  background-color: #f3ca6a;
+  color: white;
+}
+
+.PatientsForms button {
+  width: 193px;
+  height: 53px;
+  margin-top: 40px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #F0B429;
+  border-radius: 10px;
+  border-style: none;
+  outline: none;
+}
+
+.PatientsForms button:hover {
+  background-color: #c29325;
+}
+
+.PatientsForms .telephone {
+  display: inline-block;
+  width: 45%;
+}
+
+.PatientsForms .blood {
+  display: inline-block;
+  width: 45%;
+  margin-left: 10%;
+}
+
+.PatientsForms .create {
+  margin-left: 62px;
+}
+
+.PatientsForms.active {
+  top: -300%;
+  -webkit-transition: 850ms;
+  transition: 850ms;
+}
+
+@media (max-width: 850px) {
+  .PatientsForms {
+    padding-bottom: 50px;
+  }
+  .PatientsForms h1 {
+    padding: 20px 31px;
+  }
+  .PatientsForms form {
+    padding: 0 31px;
+  }
+  .PatientsForms form .picture {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+  .PatientsForms form .picture img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+  }
+  .PatientsForms form .picture button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .PatientsForms form input {
+    width: 100%;
+  }
+  .PatientsForms form select {
+    width: 100%;
+  }
+  .PatientsForms button {
+    margin-left: 31px;
+  }
+  .PatientsForms .telephone {
+    display: block;
+    width: 100%;
+  }
+  .PatientsForms .blood {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+  }
+  .PatientsForms .create {
+    margin-left: 31px;
+  }
+}
+
+@media (max-width: 600px) {
+  .PatientsForms {
+    width: 90vw;
+    left: 5vw;
+  }
+  .PatientsForms h1 {
+    font-size: 1.2rem;
+  }
+  .PatientsForms h1 img {
+    margin-top: 5px;
+  }
+  .PatientsForms form label {
+    font-size: 1rem;
+  }
+  .PatientsForms form input {
+    font-size: 1rem;
+    line-height: 2rem;
+    padding: 0 20px;
+  }
+  .PatientsForms form select {
+    font-size: 1rem;
+    height: 2.5rem;
+    padding: 0 20px;
+  }
+  .PatientsForms form .picture img {
+    width: 180px;
+  }
+  .PatientsForms button {
+    width: 133px;
+    height: 43px;
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .PatientsForms form .picture img {
+    width: 150px;
+  }
+}
+/*# sourceMappingURL=PatientsForms.module.css.map */

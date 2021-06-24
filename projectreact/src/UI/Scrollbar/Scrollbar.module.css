@@ -1,0 +1,21 @@
+.scrollbar {
+  width: 100%;
+  overflow: auto;
+  padding-bottom: 10px;
+}
+
+#style15::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+#style15::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#style15::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #FFF;
+  background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#56CCF2), to(#56CCF2), color-stop(0.6, #56CCF2));
+}
+/*# sourceMappingURL=Scrollbar.module.css.map */

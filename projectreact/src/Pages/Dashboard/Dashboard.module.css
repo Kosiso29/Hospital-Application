@@ -1,0 +1,273 @@
+.dashboard {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 5fr;
+      grid-template-rows: 1fr 1fr 5fr;
+  gap: 1rem;
+  margin: 119px 47px 36px 47px;
+  padding-left: 260px;
+  -webkit-transition: 850ms;
+  transition: 850ms;
+}
+
+.cardCalender {
+  background-color: white;
+  border-radius: 10px;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  margin-right: 1rem;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.cardStat {
+  background-color: white;
+  border-radius: 10px;
+  padding: 42px 24px 10px 24px;
+}
+
+.cardStat img {
+  float: right;
+}
+
+.cardStat h4 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 39.06px;
+  line-height: 47px;
+  color: #102A43;
+}
+
+.cardStat p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #17537F;
+}
+
+.cardBottom {
+  background-color: white;
+  border-radius: 10px;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  margin-right: 1rem;
+  padding: 17px;
+  font-size: 20px;
+}
+
+.cardBottomRight {
+  background-color: white;
+  border-radius: 10px;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2/5;
+  padding: 17px;
+  font-size: 20px;
+}
+
+.mobileCalender {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .dashboard {
+    -ms-grid-columns: 1.5fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr;
+  }
+  .cardBottom {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .cardBottomRight {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2/4;
+  }
+}
+
+@media (max-width: 1050px) {
+  .dashboard {
+    -ms-grid-columns: 1.5fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 5fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
+  }
+  .cardBottom {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 2;
+    grid-row: 3/5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .cardBottomRight {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    grid-row: 5/6;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+}
+
+@media (max-width: 850px) {
+  .dashboard {
+    -ms-grid-columns: 1.5fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 5fr;
+        grid-template-rows: 1fr 1fr 5fr;
+    margin: 119px 20px 18px 20px;
+    padding-left: 0;
+    -webkit-transition: 850ms;
+    transition: 850ms;
+  }
+  .cardBottom {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .cardBottomRight {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2/4;
+  }
+}
+
+@media (max-width: 750px) {
+  .dashboard {
+    -ms-grid-columns: 1.5fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 5fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
+  }
+  .cardBottom {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 2;
+    grid-row: 3/5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .cardBottomRight {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    grid-row: 5/6;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 2fr 3fr;
+        grid-template-rows: 1fr 1fr 1fr 2fr 3fr;
+  }
+  .cardBottom {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    grid-row: 4/5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    margin-right: 0;
+  }
+  .cardBottomRight {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    grid-row: 5/6;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+  .mobileCalender {
+    display: block;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+  }
+  .cardCalender {
+    display: none;
+  }
+  .cardStat {
+    padding: 32px 18px 7px 18px;
+  }
+  .cardStat img {
+    width: 40px;
+  }
+  .cardStat h4 {
+    font-size: 30px;
+    line-height: 37px;
+  }
+  .cardStat p {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .cardBottom {
+    padding: 17px;
+    font-size: 15px;
+  }
+  .cardBottomRight {
+    padding: 17px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 300px) {
+  .dashboard {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 2fr 3fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr 3fr;
+  }
+  .mobileCalender {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .cardBottom {
+    -ms-grid-row: 6;
+    -ms-grid-row-span: 1;
+    grid-row: 6/7;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    margin-right: 0;
+  }
+  .cardBottomRight {
+    -ms-grid-row: 7;
+    -ms-grid-row-span: 1;
+    grid-row: 7/8;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+}
+/*# sourceMappingURL=Dashboard.module.css.map */
