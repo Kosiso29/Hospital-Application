@@ -24,9 +24,9 @@ const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 const patientsRouter = require('./routes/patients')
 
-app.use('/exercises', exercisesRouter);
-app.use('/users', usersRouter);
-app.use('/patients', patientsRouter);
+app.use('/HospitalApp/api/v1/exercises', exercisesRouter);
+app.use('/HospitalApp/api/v1/users', usersRouter);
+app.use('/HospitalApp/api/v1/patients', patientsRouter);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, '/projectreact/build')));
