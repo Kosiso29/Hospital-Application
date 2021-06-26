@@ -8,13 +8,14 @@ import Login from '../../../UI/Login/Login';
 class patientsforms extends Component {
     state = {
         firstName: '',
-        gender: '',
+        gender: 'Male',
         email: '',
         date_of_birth: '',
         address: '',
         phoneNumber: '',
         submitted: false,
-        loggedIn: false
+        loggedIn: false,
+        once: true
     }
 
     componentDidMount () {
@@ -22,13 +23,35 @@ class patientsforms extends Component {
         // console.log(this.props);
     }
 
+    componentDidUpdate() {
+        if (this.props.id && this.state.once) {
+            this.setState({ once: false });
+            axios.get(`/patients/${this.props.id}`)
+                .then((response) => {
+                this.setState({
+                    firstName: response.data.firstName + ' ' + response.data.lastName,
+                    gender: response.data.gender,
+                    email: response.data.email,
+                    phoneNumber: response.data.phoneNumber,
+                    date_of_birth: response.data.date_of_birth
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+    }
+
     postDataHandler = () => {
+        let add = 'add';
+        if (this.props.id) add = this.props.id;
+        const dataName = this.state.firstName.split(' ')
         const data = {
-            firstName: this.state.firstName,
-            lastName: "Afoenyi",
-            jobDescription: "FSE",
+            firstName: dataName[0],
+            lastName: dataName[1],
+            jobDescription: this.state.jobDescription,
             email: this.state.email,
-            phoneNumber: "09062072225",
+            phoneNumber: this.state.phoneNumber,
             gender: this.state.gender
         };
         // this.setState((prevState) => {
@@ -36,9 +59,8 @@ class patientsforms extends Component {
         // });
         this.setState({submitted: true});
         // axios.post('/AddUser', data)
-        axios.post('/patients/add', data)
+        axios.post(`/patients/${add}`, data)
             .then(response => {
-                console.log(response);
                 this.setState({submitted: false});
                 // console.log(response.data);
                 // this.props.history.push('/Posts');
@@ -61,6 +83,10 @@ class patientsforms extends Component {
             });
     }
 
+    loadDataHandler = () => {
+        console.log(this.props.id);
+    }
+
     render () {
         if (this.state.loggedIn) {
             setTimeout(() => {
@@ -71,7 +97,7 @@ class patientsforms extends Component {
             <div className={this.props.show ? classes.PatientsForms : classes.PatientsForms + ' ' + classes.active}>
                 {this.state.loggedIn ? <Login login='block' text="Successful" /> : null}
                 {this.state.submitted ? <Login spinner='show' login='none' /> : null}
-                <h1>Add Patient <img src={close} onClick={this.props.clicked} alt='' /></h1>
+                <h1>{this.props.name} Patient <img src={close} onClick={this.props.clicked} alt='' /></h1>
                 <Scrollbar>
                 <form>
 
@@ -117,7 +143,7 @@ class patientsforms extends Component {
                     </div>
 
                 </form>
-                <button className={classes.create} onClick={this.postDataHandler}>Create Profile</button>
+                <button className={classes.create} onClick={this.postDataHandler}>{this.props.name} Patient</button>
                 </Scrollbar>
             </div>
     );

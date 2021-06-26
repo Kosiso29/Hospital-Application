@@ -7,7 +7,7 @@ const tablebutton = (props) => (
         <div className={classes.dropdownContent}>
             <p>Medical History</p>
             <p>Bills</p><hr></hr>
-            <p style={{color: 'red'}}>Delete</p>
+            <p style={{color: 'red'}} onClick={props.delete}>Delete</p>
         </div>
     </div>
 );

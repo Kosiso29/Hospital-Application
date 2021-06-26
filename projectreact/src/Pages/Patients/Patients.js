@@ -14,23 +14,28 @@ class Patients extends Component {
     state = {
         items: [],
         isLoaded: false,
-        openForms: false
+        openForms: false,
+        formType: "",
+        formId: ""
     }
     
     closeFormHandler = () => {
         this.setState({openForms: false});
     }
 
-    openFormHandler = () => {
-        this.setState({openForms: true});
-        console.log(window.location.pathname);
+    openFormHandler = (e, input) => {
+        this.setState({ openForms: true, formType: input });
+        if (input === 'Edit') {
+            this.setState({ formId: e.target.closest('tr').id });
+        } else {
+            this.setState({ formId: "" });
+        }
     }
 
     componentDidMount () {
         // axios.get('/GetAllUser')
         axios.get('/patients')
             .then(response => {
-                console.log(response.data, response.data[0], response.data[0]._id);
                 this.setState({
                     isLoaded: true,
                     items: response.data
@@ -44,17 +49,52 @@ class Patients extends Component {
             });
     };
 
+    onEditHandler = (e) => {
+        e.target.nextSibling.style.display === "none" ? e.target.nextSibling.style.display = "block" : e.target.nextSibling.style.display = "none";
+        console.log('editHandler', this.state.editTable, e.target.textContent, e.target.nextSibling.style.display);
+    };
+
+    onDeleteHandler = (e) => {
+        const itemId = e.target.closest('tr').id;
+        this.setState({
+            isLoaded: false
+        });
+        axios.delete(`/patients/${itemId}`)
+            .then(res => {
+                axios.get('/patients')
+                    .then(response => {
+                        this.setState({
+                            isLoaded: true,
+                            items: response.data
+                        });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        this.setState({
+                            isLoaded: true
+                        });
+                    });
+            })
+            .catch(err => {
+                console.log(err);
+                this.setState({
+                    isLoaded: true
+                });
+            });
+        console.log(e.target.closest('tr').id);
+    }
+
     render () {
     return(
         <div>
                 <Backdrop show={this.state.openForms} clicked={this.closeFormHandler} />
-                <PatientsForms show={this.state.openForms} clicked={this.closeFormHandler} post={this.postDataHandler} />
+                <PatientsForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={this.closeFormHandler} post={this.postDataHandler} />
                 <div className={classes.searchBox}>
                     <input className={classes.searchTxt} type='text' placeholder="Search patient's name, ID" />
                     <Link className={classes.searchBtn} to='#'></Link>
                 </div>
                 <div className={classes.buttonPatients}>
-                    <button onClick={this.openFormHandler} >Add Patient</button>
+                    <button onClick={(e) => this.openFormHandler(e, 'Add')} >Add Patient</button>
                 </div>
                 
                 <div className={classes.patients}>
@@ -93,13 +133,13 @@ class Patients extends Component {
                                 <tbody>
                                 {this.state.isLoaded ? 
                                 this.state.items.map(item => (
-                                    <tr key={item._id}>
+                                    <tr id={item._id} key={item._id}>
                                         <td style={{display: 'table-cell'}}><img src={patientpic}  width='25' alt=''/>  <p style={{display: 'inline-block', verticalAlign: 'top'}}>   {item.firstName + ' ' + item.lastName}</p></td>
                                         <td>{item.gender}</td>
                                         <td>{item.email}</td>
                                         {/* <td>{item.jobDescription}</td> */}
                                         {/* <td>{item.phoneNumber}</td> */}
-                                        <td><TableButton /></td>
+                                        <td><TableButton clicked={(e) => this.openFormHandler(e, 'Edit')} delete={this.onDeleteHandler} /></td>
                                     </tr>
                                 )) : null}
                                 </tbody>

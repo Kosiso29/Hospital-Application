@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './Staff.module.css';
-import axios from '../../axios';
+// import axios from '../../axios';
 import TableButton from '../../UI/TableButton/TableButton';
 import Scrollbar from "../../UI/Scrollbar/Scrollbar";
 import Spinner from "../../UI/Spinner/Spinner";
@@ -11,18 +11,18 @@ class Staff extends Component {
 
     state = {
         items: [],
-        isLoaded: false,
+        isLoaded: true,
         openForms: false
     }
 
     componentDidMount () {
-        axios.get('/GetAllUser')
-            .then(response => {
-                this.setState({
-                    isLoaded: true,
-                    items: response.data
-                });
-            });
+        // axios.get('/GetAllUser')
+        //     .then(response => {
+        //         this.setState({
+        //             isLoaded: true,
+        //             items: response.data
+        //         });
+        //     });
     };
 
     render () {

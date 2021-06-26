@@ -106,7 +106,7 @@ class Navbar extends Component {
                         </li>
                         <br></br>
                         <li className='nav-text'>
-                            <Link to='/projectreact' onClick={this.showSidebar4}>
+                            <Link to='/' onClick={this.showSidebar4}>
                                 {/* {item.icon} */}
                                 <img src={process.env.PUBLIC_URL + "/assets/img/logout.png"} width='25' alt='' />
                                 <span>Log Out</span>

@@ -33,7 +33,7 @@ class Signin extends Component {
                     userId = param[1];
                     axios.get('http://102.164.38.38/HospitalApp/api/v1/VerifyEmail?UserId=' + userId)
                         .then(response => {
-                            console.log(response.data)
+                            // console.log(response.data)
                             this.setState({verifiedEmail: response.data.email})
             });
                 }            
@@ -41,10 +41,10 @@ class Signin extends Component {
             // if (query.entries()[0] === 'userId') {
             //     userId = query.entries()[1];
             // }
-            setTimeout(() => {
-                console.log('[Query after delay] ' + this.props.UserId);
-            }, 5000);
-            console.log('[Query before delay] ' + this.props.UserId);
+            // setTimeout(() => {
+            //     console.log('[Query after delay] ' + this.props.UserId);
+            // }, 5000);
+            // console.log('[Query before delay] ' + this.props.UserId);
             this.setState({userId: userId});
         } 
         if (this.state.loggedIn === false) {
@@ -67,7 +67,7 @@ class Signin extends Component {
         this.setState({submitted: true});
         axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyChQaYngkLZ57bg9r9fmIsyzOueM4ijUvc', data)
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 this.setState({submitted: false});
             })
             .then(() => {
@@ -97,11 +97,11 @@ class Signin extends Component {
                     console.log(response.data);
                     this.setState({createPassword: false, email: email.verifiedEmail, password: ''});
                     console.log(email);
-                    this.props.history.replace('/projectreact');
+                    this.props.history.replace('/');
                 })
                 .catch(error => {
                     alert(error);
-                    this.props.history.replace('/projectreact');
+                    this.props.history.replace('/');
                 });
         } else {
             alert('Password does not match');

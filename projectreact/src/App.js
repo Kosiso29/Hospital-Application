@@ -33,7 +33,7 @@ class App extends Component {
       <>
         {/* {this.state.loggedIn ? <div style={{height: '100vh', width: '100vw', position: 'fixed', zIndex: '10000', backgroundColor: 'rgba(0,0,0,0.5)', paddingTop: '200px', left: '0'}}><Spinner /></div> : null} */}
           <Switch>
-            <Route path="/projectreact" exact component={Signin} />
+            <Route path="/" exact component={Signin} />
             {/* <Route path='/' exact component={Home} />
             <Route path='/patients' exact component={Products} />
             <Route path='/staff' exact component={Reports} />
@@ -55,7 +55,7 @@ class App extends Component {
             <Navbar />
               <Dashboard />
             </Route>
-            <Redirect to='/projectreact' />
+            <Redirect to='/' />
           </Switch>
       </>
     );
