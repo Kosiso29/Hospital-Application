@@ -123,10 +123,18 @@
   width: 45%;
 }
 
+.PatientsForms .telephone input {
+  width: 100%;
+}
+
 .PatientsForms .blood {
   display: inline-block;
   width: 45%;
   margin-left: 10%;
+}
+
+.PatientsForms .blood input {
+  width: 100%;
 }
 
 .PatientsForms .create {

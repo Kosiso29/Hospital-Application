@@ -1,100 +1,51 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import classes from './Staff.module.css';
+import React from 'react';
+// import { Link } from 'react-router-dom';
+// import classes from './Staff.module.css';
+import classes from '../Patients/Patients.module.css';
 // import axios from '../../axios';
-import TableButton from '../../UI/TableButton/TableButton';
+// import TableButton from '../../UI/TableButton/TableButton';
+import Backdrop from '../../UI/Backdrop/Backdrop';
+import StaffForms from './StaffForms/StaffForms';
 import Scrollbar from "../../UI/Scrollbar/Scrollbar";
 import Spinner from "../../UI/Spinner/Spinner";
 import patientpic from "../../assets/images/patientpic.png";
+import Patients from "../Patients/Patients";
+import Card from "../../UI/Card/Card";
+import Table from "../../Components/Table/Table";
+import SearchBox from "../../UI/SearchBox/SearchBox";
+import Button from "../../UI/Button/Button";
 
-class Staff extends Component {
-
-    state = {
-        items: [],
-        isLoaded: true,
-        openForms: false
-    }
-
+class Staff extends Patients {    
     componentDidMount () {
-        // axios.get('/GetAllUser')
-        //     .then(response => {
-        //         this.setState({
-        //             isLoaded: true,
-        //             items: response.data
-        //         });
-        //     });
+        this.onGetHandler("staff");
     };
-
+    
     render () {
-    return(
-        <>
-            <div className={classes.searchBox}>
-                    <input className={classes.searchTxt} type='text' placeholder="Search staff's name, ID" />
-                    <Link className={classes.searchBtn} to='#'></Link>
-                </div>
-                <div className={classes.buttonStaff}>
-                    <button type='submit'>Add Staff</button>
-                </div>
-                
-                <div className={classes.staff}>
-                    <div className={classes.cardStat}>
-                        <img src={process.env.PUBLIC_URL + "/assets/img/doctor.png"} alt='' />
-                        <h4>45</h4><p>Nurser</p>
-                        
-                    </div>
-                    <div className={classes.cardStat}>
-                        <img src={process.env.PUBLIC_URL + "/assets/img/doctor.png"} alt='' />
-                        <h4>15</h4><p>Doctors</p>
-                    </div>
-                    <div className={classes.cardStat}>
-                        <img src={process.env.PUBLIC_URL + "/assets/img/cleaners.png"} alt='' />
-                        <h4>15</h4><p>Cleaners</p>
-                    </div>
-                    <div className={classes.cardStat}>
-                        <img src={process.env.PUBLIC_URL + "/assets/img/patient.png"} alt='' />
-                        <h4>17</h4><p>Patients</p>
-                    </div>
-                    <div className={classes.cardBottomStaff}>
-                        <h4>Staff list</h4><p></p>
+        return(
+            <div>
+                <Backdrop show={this.state.openForms} clicked={this.closeFormHandler} />
+                <StaffForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={this.closeFormHandler} post={this.postDataHandler} />
+                <SearchBox placeholder="Search staff's name, ID" />
+                <Button clicked={(e) => this.openFormHandler(e, 'Add')} value="Add Staff" />
+                <div className={classes.patients}>
+                    <Card src={process.env.PUBLIC_URL + "/assets/img/doctor.png"} number="45" value="Nurses"/>
+                    <Card src={process.env.PUBLIC_URL + "/assets/img/doctor.png"} number="15" value="Doctors"/>
+                    <Card src={process.env.PUBLIC_URL + "/assets/img/cleaners.png"} number="15" value="Cleaners"/>
+                    <Card src={process.env.PUBLIC_URL + "/assets/img/patient.png"} number="17" value="Patients"/>
+                    <div className={classes.cardBottomPatients}>
+                        <h4>Staff list</h4><br/>                    
                         <Scrollbar>
-                            <div style={{maxHeight: '400px'}}>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Gender</th>
-                                    <th>Email</th>
-                                    {/* <th>Job Description</th> */}
-                                    {/* <th>Phone Number</th> */}
-                                    <th>Options</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {this.state.isLoaded ? 
-                                this.state.items.map(item => (
-                                    <tr key={item.userId}>
-                                        <td style={{display: 'table-cell'}}><img src={patientpic}  width='25' alt=''/>  <p style={{display: 'inline-block', verticalAlign: 'top'}}>   {item.firstName + ' ' + item.lastName}</p></td>
-                                        <td>{item.gender}</td>
-                                        <td>{item.email}</td>
-                                        {/* <td>{item.jobDescription}</td> */}
-                                        {/* <td>{item.phoneNumber}</td> */}
-                                        <td><TableButton /></td>
-                                    </tr>
-                                )) : null}
-                                </tbody>
-                            </table>
-                            </div>
+                            <Table
+                                headers={["Name", "Gender", "Email", "Options"]} isLoaded={this.state.isLoaded}
+                                rows={this.state.items} patientpic={patientpic}
+                                clicked={(e) => this.openFormHandler(e, 'Edit')} delete={(e) => { this.onDeleteHandler(e, "staff") }} /> {/* <td>{item.jobDescription}</td> */} {/* <td>{item.phoneNumber}</td> */}
                             {this.state.isLoaded ? null : <Spinner />}
-                        </Scrollbar>
+                        </Scrollbar>                    
                     </div>
-                    {/* <div className={classes.cardStat}>
-                        Calender
-                    </div> */}
-                    {/* <h1>Dashboard</h1> */}
                 </div>
-        </>
-    );
-}
+            </div>
+        );
+    };
 }
 
 export default Staff;

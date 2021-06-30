@@ -1,0 +1,62 @@
+.buttonPatients {
+  height: 50px;
+  padding-right: 47px;
+}
+
+.buttonPatients button {
+  float: right;
+  width: 300px;
+  height: 60px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  background-image: url("../../assets/images/add.png");
+  background-repeat: no-repeat;
+  text-indent: 10px;
+  background-size: 25px 25px;
+  background-position-x: 50px;
+  background-position-y: center;
+  color: #FFFFFF;
+  background-color: #F0B429;
+  border-radius: 10px;
+  border-style: none;
+  outline: none;
+}
+
+.buttonPatients button:hover {
+  background-color: #c29325;
+}
+
+@media (max-width: 850px) {
+  .buttonPatients {
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .buttonPatients {
+    height: 35px;
+  }
+  .buttonPatients button {
+    width: 200px;
+    height: 45px;
+    font-size: 15px;
+    text-indent: 10px;
+    background-size: 15px 15px;
+    background-position-x: 30px;
+    background-position-y: center;
+  }
+}
+
+@media (max-width: 300px) {
+  .buttonPatients {
+    width: calc(100vw - 40px);
+    padding-left: 20px;
+  }
+  .buttonPatients button {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=Button.module.css.map */

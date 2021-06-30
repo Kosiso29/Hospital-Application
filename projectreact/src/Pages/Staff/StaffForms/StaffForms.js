@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import classes from './PatientsForms.module.css';
+import React from 'react';
+import PatientsForms from "../../Patients/PatientsForms/PatientsForms";
+import classes from "../../Patients/PatientsForms/PatientsForms.module.css";
 import Scrollbar from '../../../UI/Scrollbar/Scrollbar';
 import close from '../../../assets/images/close.png';
 import axios from '../../../axios';
@@ -7,14 +8,13 @@ import Login from '../../../UI/Login/Login';
 import Image from "../../../UI/Form/Image/Image";
 import Input from "../../../UI/Form/Input/Input";
 
-class patientsForms extends Component {
+class StaffForms extends PatientsForms {
     state = {
         firstName: '',
-        gender: 'Male',
         email: '',
-        date_of_birth: '',
-        address: '',
+        password: '',
         phoneNumber: '',
+        gender: 'Male',
         submitted: false,
         loggedIn: false,
         runComponentDidUpdateOnce: true
@@ -23,7 +23,7 @@ class patientsForms extends Component {
     componentDidUpdate() {
         if (this.props.id && this.state.runComponentDidUpdateOnce) {
             this.setState({ runComponentDidUpdateOnce: false });
-            axios.get(`/patients/${this.props.id}`)
+            axios.get(`/staff/${this.props.id}`)
                 .then((response) => {
                 this.setState({
                     firstName: response.data.firstName + ' ' + response.data.lastName,
@@ -46,31 +46,23 @@ class patientsForms extends Component {
         const data = {
             firstName: dataName[0],
             lastName: dataName[1],
-            jobDescription: this.state.jobDescription,
             email: this.state.email,
-            phoneNumber: this.state.phoneNumber,
-            gender: this.state.gender
+            password: this.state.password || "123456",
+            phoneNumber: this.state.phoneNumber || "08064954840",
+            gender: this.state.gender || "Male"
         };
-        // this.setState((prevState) => {
-        //     return {firstName: prevState.firstName}
-        // });
         this.setState({submitted: true});
-        // axios.post('/AddUser', data)
-        axios.post(`/patients/${add}`, data)
-            .then(response => {
+        axios.post(`/staff/${add}`, data)
+            .then(() => {
                 this.setState({submitted: false});
-                // console.log(response.data);
-                // this.props.history.push('/Posts');
-                // this.props.history.replace('/Posts');
             })
             .then(() => {
                 this.setState({
                     firstName: '',
-                    gender: 'Male',
                     email: '',
+                    password: '',
                     phoneNumber: '',
-                    date_of_birth: '',
-                    address: '',
+                    gender: 'Male',
                     loggedIn: true
                 });
             })
@@ -78,10 +70,6 @@ class patientsForms extends Component {
                 this.setState({submitted: false});
                 console.log(error);
             });
-    }
-
-    loadDataHandler = () => {
-        console.log(this.props.id);
     }
 
     render () {
@@ -94,7 +82,7 @@ class patientsForms extends Component {
             <div className={this.props.show ? classes.PatientsForms : classes.PatientsForms + ' ' + classes.active}>
                 {this.state.loggedIn ? <Login login='block' text="Successful" /> : null}
                 {this.state.submitted ? <Login spinner='show' login='none' /> : null}
-                <h1>{this.props.name} Patient <img src={close} onClick={this.props.clicked} alt='' /></h1>
+                <h1>{this.props.name} Staff <img src={close} onClick={this.props.clicked} alt='' /></h1>
                 <Scrollbar>
                     <form>
                         <Image classes={classes.picture} title={"Profile Picture"} src={process.env.PUBLIC_URL + "/assets/img/patient.png"} />
@@ -106,11 +94,11 @@ class patientsForms extends Component {
                         <Input classes={classes.telephone} title={"Telephone"} value={this.state.phoneNumber} changed={(event) => this.setState({phoneNumber: event.target.value})} />
                         <Input classes={classes.blood} style={{width: '100%'}} inputType={true} title={"Blood Group"} select={["A", "B", "AB", "O"]}/>
                     </form>
-                    <button className={classes.create} onClick={this.postDataHandler}>{this.props.name} Patient</button>
+                    <button className={classes.create} onClick={this.postDataHandler}>{this.props.name} Staff</button>
                 </Scrollbar>
             </div>
-    );
+        );
     }
 }
 
-export default patientsForms;
+export default StaffForms;

@@ -112,11 +112,17 @@
     .telephone{
         display: inline-block;
         width: 45%;
+        input {
+            width: 100%;
+        }
     }
     .blood{
         display: inline-block;
         width: 45%;
         margin-left: 10%;
+        select {
+            width: 100%;
+        }
     }
     .create{
         margin-left: 62px;

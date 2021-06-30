@@ -49,36 +49,36 @@ $card-background-color: white;
     padding: 8px;
     }
 }
-.buttonPatients{
-    height: 50px;
-    padding-right: 47px;
-    button{
-        float: right;
-        width: 300px;
-        height: 60px;
+// .buttonPatients{
+//     height: 50px;
+//     padding-right: 47px;
+//     button{
+//         float: right;
+//         width: 300px;
+//         height: 60px;
 
-        font-style: normal;
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 24px;
-        cursor: pointer;
-        background-image: url('../../assets/images/add.png');
-        background-repeat: no-repeat;
-        text-indent: 10px;
-        background-size: 25px 25px;
-        background-position-x: 50px;
-        background-position-y: center;
+//         font-style: normal;
+//         font-weight: 600;
+//         font-size: 20px;
+//         line-height: 24px;
+//         cursor: pointer;
+//         background-image: url('../../assets/images/add.png');
+//         background-repeat: no-repeat;
+//         text-indent: 10px;
+//         background-size: 25px 25px;
+//         background-position-x: 50px;
+//         background-position-y: center;
 
-        color: #FFFFFF;
-        background-color: #F0B429;
-        border-radius: 10px;
-        border-style: none;
-        outline: none;
-        &:hover{
-            background-color: #c29325;
-        }
-    }      
-}
+//         color: #FFFFFF;
+//         background-color: #F0B429;
+//         border-radius: 10px;
+//         border-style: none;
+//         outline: none;
+//         &:hover{
+//             background-color: #c29325;
+//         }
+//     }      
+// }
 // .patientsTableImage {
 //     background-image: url('./assets/images/patientpic.png');
 //     background-repeat: no-repeat;
@@ -87,60 +87,60 @@ $card-background-color: white;
 //     background-position-x: 5px;
 //     background-position-y: center;
 // }
-.searchBox{
-    height: 40px;
-    border-radius: 40px;
-    //padding: 10px;
-    margin-bottom: 40px;
-    padding-left: 260px;
-    transition: 850ms;
-}
-.searchBtn{
-    width: 40px;
-    height: 40px;
-}
-.searchTxt{
-    border: none;
-    outline: none;
-    //padding: 0 15px;
-    margin-left: 47px;
-    font-size: 16px;
-    line-height: 40px;
-    width: 45%;
-    min-width: 350px;
-    border-radius: 10px;
-    color: #102A43;
-    background-image: url("../../assets/images/search.png");
-    text-indent: 100px;
-    background-repeat: no-repeat;
-    background-size: 25px 25px;
-    background-position-x: 50px;
-    background-position-y: center;
-}
-.cardStat{
-    background-color: $card-background-color;
-    border-radius: 10px;
-    padding:  42px 24px 10px 24px;
-    img{
-      float: right;
-    }
-    h4{
-      font-style: normal;
-      font-weight: 500;
-      font-size: 39.06px;
-      line-height: 47px;
+// .searchBox{
+//     height: 40px;
+//     border-radius: 40px;
+//     //padding: 10px;
+//     margin-bottom: 40px;
+//     padding-left: 260px;
+//     transition: 850ms;
+// }
+// .searchBtn{
+//     width: 40px;
+//     height: 40px;
+// }
+// .searchTxt{
+//     border: none;
+//     outline: none;
+//     //padding: 0 15px;
+//     margin-left: 47px;
+//     font-size: 16px;
+//     line-height: 40px;
+//     width: 45%;
+//     min-width: 350px;
+//     border-radius: 10px;
+//     color: #102A43;
+//     background-image: url("../../assets/images/search.png");
+//     text-indent: 100px;
+//     background-repeat: no-repeat;
+//     background-size: 25px 25px;
+//     background-position-x: 50px;
+//     background-position-y: center;
+// }
+// .cardStat{
+//     background-color: $card-background-color;
+//     border-radius: 10px;
+//     padding:  42px 24px 10px 24px;
+//     img{
+//       float: right;
+//     }
+//     h4{
+//       font-style: normal;
+//       font-weight: 500;
+//       font-size: 39.06px;
+//       line-height: 47px;
       
-      color: #102A43; 
-    }
-    p{
-      font-style: normal;
-      font-weight: normal;
-      font-size: 20px;
-      line-height: 24px;
+//       color: #102A43; 
+//     }
+//     p{
+//       font-style: normal;
+//       font-weight: normal;
+//       font-size: 20px;
+//       line-height: 24px;
       
-      color: #17537F; 
-    }
-  }
+//       color: #17537F; 
+//     }
+//   }
 
   @media (max-width: 1150px) {
     .patients{
@@ -160,63 +160,63 @@ $card-background-color: white;
       margin: 60px 20px 18px 20px;
       gap: 1rem;
     }
-    .searchBox{
-      padding-left: 0;
-      transition: 850ms;
-      margin-top: 50px;
-      margin-bottom: 50px;
-    }
-    .searchTxt{
-      margin-left: 20px;
-    }
-    .buttonPatients{
-      padding-right: 20px;
-    }
+    // .searchBox{
+    //   padding-left: 0;
+    //   transition: 850ms;
+    //   margin-top: 50px;
+    //   margin-bottom: 50px;
+    // }
+    // .searchTxt{
+    //   margin-left: 20px;
+    // }
+    // .buttonPatients{
+    //   padding-right: 20px;
+    // }
   }
 
   @media (max-width: 600px) {
-    .cardStat{
-      padding:  32px 18px 7px 18px;
-      img{
-        width: 40px;
-      }
-      h4{
-        font-size: 30px;
-        line-height: 37px;
-      }
-      p{
-        font-size: 15px;
-        line-height: 18px;
-      }      
-    }
+    // .cardStat{
+    //   padding:  32px 18px 7px 18px;
+    //   img{
+    //     width: 40px;
+    //   }
+    //   h4{
+    //     font-size: 30px;
+    //     line-height: 37px;
+    //   }
+    //   p{
+    //     font-size: 15px;
+    //     line-height: 18px;
+    //   }      
+    // }
     .cardBottomPatients{
       padding: 17px;
       font-size: 15px;
     }
-    .buttonPatients{
-      height: 35px;
-      button{
-          width: 200px;
-          height: 45px;
-          font-size: 15px;
-          text-indent: 10px;
-          background-size: 15px 15px;
-          background-position-x: 30px;
-          background-position-y: center;
-      }      
-    }
-    .searchTxt{
-      font-size: 12px;
-      line-height: 35px;
-      // width: 45%;
-      // min-width: 250px;
-      text-indent: 60px;
-      background-position-x: 10px;
-      background-position-y: center;
-      margin-right: 20px;
-      width: calc(100vw - 40px);
-      min-width: 50px;
-    }
+    // .buttonPatients{
+    //   height: 35px;
+    //   button{
+    //       width: 200px;
+    //       height: 45px;
+    //       font-size: 15px;
+    //       text-indent: 10px;
+    //       background-size: 15px 15px;
+    //       background-position-x: 30px;
+    //       background-position-y: center;
+    //   }      
+    // }
+    // .searchTxt{
+    //   font-size: 12px;
+    //   line-height: 35px;
+    //   // width: 45%;
+    //   // min-width: 250px;
+    //   text-indent: 60px;
+    //   background-position-x: 10px;
+    //   background-position-y: center;
+    //   margin-right: 20px;
+    //   width: calc(100vw - 40px);
+    //   min-width: 50px;
+    // }
   }
   @media (max-width: 300px) {
     .patients{
@@ -235,11 +235,11 @@ $card-background-color: white;
     //   width: calc(100vw - 40px);
     //   min-width: 50px;
     // }
-    .buttonPatients{
-      width: calc(100vw - 40px);
-      padding-left: 20px;
-      button{
-          width: 100%;
-      }      
-    }
+    // .buttonPatients{
+    //   width: calc(100vw - 40px);
+    //   padding-left: 20px;
+    //   button{
+    //       width: 100%;
+    //   }      
+    // }
   }
