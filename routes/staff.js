@@ -63,6 +63,7 @@ router.route('/:id').post((req, res) => {
             req.body.password ? staff.password = req.body.password : null;
             req.body.phoneNumber ? staff.phoneNumber = req.body.phoneNumber : null;
             req.body.gender ? staff.gender = req.body.gender : null;
+            req.body.admin ? staff.admin = req.body.admin : null;
 
             staff.save()
                 .then(() => res.json('Staff updated!'))
