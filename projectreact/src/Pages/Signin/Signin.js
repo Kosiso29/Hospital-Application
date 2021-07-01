@@ -17,11 +17,12 @@ class Signin extends Component {
         submitted: false,
         createPassword: false,
         verifiedEmail: '',
-        error: false
+        error: false,
+        errorValue: null
       }
 
     
-    componentDidMount () {
+    componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         let userId = '';
         if (query.entries()) {
@@ -65,7 +66,8 @@ class Signin extends Component {
             returnSecureToken: true
         }
         this.setState({submitted: true});
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyChQaYngkLZ57bg9r9fmIsyzOueM4ijUvc', data)
+        // axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyChQaYngkLZ57bg9r9fmIsyzOueM4ijUvc', data)
+        axios.post('/staff/login', data)
             .then(response => {
                 // console.log(response.data)
                 this.setState({submitted: false});
@@ -75,8 +77,9 @@ class Signin extends Component {
                 this.setState({loggedIn: true});
             })
             .catch(error => {
-                alert(error);
-                this.setState({error: true, submitted: false});
+                // alert(error);
+                console.log(String(error));
+                this.setState({error: true, submitted: false, errorValue: String(error)});
             })
     
     }
@@ -129,6 +132,8 @@ class Signin extends Component {
                 this.setState({error: false});
             }, 1000);
         }
+        let displayError = null;
+        if (this.state.errorValue) displayError = <p style={{ color: "red" }}>{this.state.errorValue + "*" }<br></br>Wrong email or password*</p>
 
         let rightPanel = (
             <div className={classes.rightPanel}>
@@ -142,6 +147,7 @@ class Signin extends Component {
                     <input key='password' onChange={(event) => this.onChangeHandler(event, 'password')} value={this.state.password} className={classes.searchTxtSignin} type='password' placeholder="Password" name="Password" />
                     {/* <Link className='search-btnSignin' to='#'></Link> */}
                 </div>
+                {displayError}
                 <div className={classes.buttonSignin}>
                     <button type='submit' onClick={this.loggedIn} /*onClick={this.login}*/>Login</button>
                 </div>
@@ -167,6 +173,7 @@ class Signin extends Component {
                         <input key='password' onChange={(event) => this.onChangeHandler(event, 'password')} value={this.state.password} className={classes.searchTxtSignin} type='password' placeholder="Confirm Password" name="Password" />
                         {/* <Link className='search-btnSignin' to='#'></Link> */}
                     </div>
+                    {displayError}
                     {verifyPassword}
                     <div className={classes.buttonSignin}>
                         <button type='submit' onClick={this.createPassword} /*onClick={this.login}*/>Create Password</button>

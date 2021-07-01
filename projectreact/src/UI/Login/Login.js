@@ -7,7 +7,7 @@ import Spinner from '../Spinner/Spinner';
 const login = (props) => (
     <div className={classes.Login}>
         <div style={{display: props.login}}>
-            {props.text === 'Successfull' || 'Login Successful' ? <img src={Login} alt='' /> : <img src={Failed} alt='' />}
+            {props.text === 'Successful' || props.text === 'Login Successful' ? <img src={Login} alt='' /> : <img src={Failed} alt='' />}
             <p>{props.text}</p>
         </div>
         {props.spinner ? <Spinner /> : null}

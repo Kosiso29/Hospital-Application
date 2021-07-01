@@ -6,7 +6,7 @@ const staffSchema = new Schema({
     firstName: { type: String, required: true},
     lastName: { type: String },
     email: { type: String, require: true, unique: true, trim: true, minlength: 7 },
-    password: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
     phoneNumber: { type: String },
     gender: { type: String }
 }, {

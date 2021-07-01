@@ -27,10 +27,10 @@ class StaffForms extends PatientsForms {
                 .then((response) => {
                 this.setState({
                     firstName: response.data.firstName + ' ' + response.data.lastName,
-                    gender: response.data.gender,
                     email: response.data.email,
+                    password: response.data.password,
                     phoneNumber: response.data.phoneNumber,
-                    date_of_birth: response.data.date_of_birth
+                    gender: response.data.gender
                 });
             })
             .catch(error => {
@@ -89,10 +89,10 @@ class StaffForms extends PatientsForms {
                         <Input title={"Name"} value={this.state.firstName} changed={(event) => this.setState({firstName: event.target.value})} />
                         <Input title={"Email Address"} value={this.state.email} changed={(event) => this.setState({email: event.target.value})} />
                         <Input inputType={true} title={"Gender"} select={["Male", "Female"]} value={this.state.gender} changed={(event) => this.setState({gender: event.target.value})} />
-                        <Input title={"Birth Date"} value={this.state.date_of_birth} changed={(event) => this.setState({date_of_birth: event.target.value})} />
-                        <Input style={{width: '100%'}} title={"Address"} value={this.state.address} changed={(event) => this.setState({address: event.target.value})} />
+                        <Input title={"Password"} value={this.state.password} changed={(event) => this.setState({password: event.target.value})} />
+                        {/* <Input style={{width: '100%'}} title={"Address"} value={this.state.address} changed={(event) => this.setState({address: event.target.value})} /> */}
                         <Input classes={classes.telephone} title={"Telephone"} value={this.state.phoneNumber} changed={(event) => this.setState({phoneNumber: event.target.value})} />
-                        <Input classes={classes.blood} style={{width: '100%'}} inputType={true} title={"Blood Group"} select={["A", "B", "AB", "O"]}/>
+                        {/* <Input classes={classes.blood} style={{width: '100%'}} inputType={true} title={"Blood Group"} select={["A", "B", "AB", "O"]}/> */}
                     </form>
                     <button className={classes.create} onClick={this.postDataHandler}>{this.props.name} Staff</button>
                 </Scrollbar>

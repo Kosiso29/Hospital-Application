@@ -7,6 +7,19 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/login').post((req, res) => {
+    Staff.find()
+        .then(staff => {
+            const user = staff.find(user => user.email === req.body.email && user.password === req.body.password);
+            user ? res.json(staff[0].firstName) : res.status(400).send('Error: Wrong email or password');
+            console.log(staff[0].email, staff[0].password, user);
+        })
+        .catch(err => {
+            res.json(err);
+            console.log(err[0]);
+        });
+})
+
 router.route('/add').post((req, res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
