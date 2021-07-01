@@ -15,6 +15,7 @@ class StaffForms extends PatientsForms {
         password: '',
         phoneNumber: '',
         gender: 'Male',
+        admin: 'No',
         submitted: false,
         loggedIn: false,
         runComponentDidUpdateOnce: true
@@ -30,7 +31,8 @@ class StaffForms extends PatientsForms {
                     email: response.data.email,
                     password: response.data.password,
                     phoneNumber: response.data.phoneNumber,
-                    gender: response.data.gender
+                    gender: response.data.gender,
+                    admin: response.data.admin
                 });
             })
             .catch(error => {
@@ -49,7 +51,8 @@ class StaffForms extends PatientsForms {
             email: this.state.email,
             password: this.state.password || "123456",
             phoneNumber: this.state.phoneNumber || "08064954840",
-            gender: this.state.gender || "Male"
+            gender: this.state.gender || "Male",
+            admin: this.state.admin || "No"
         };
         this.setState({submitted: true});
         axios.post(`/staff/${add}`, data)
@@ -63,6 +66,7 @@ class StaffForms extends PatientsForms {
                     password: '',
                     phoneNumber: '',
                     gender: 'Male',
+                    admin: 'No',
                     loggedIn: true
                 });
             })
@@ -92,7 +96,7 @@ class StaffForms extends PatientsForms {
                         <Input title={"Password"} value={this.state.password} changed={(event) => this.setState({password: event.target.value})} />
                         {/* <Input style={{width: '100%'}} title={"Address"} value={this.state.address} changed={(event) => this.setState({address: event.target.value})} /> */}
                         <Input classes={classes.telephone} title={"Telephone"} value={this.state.phoneNumber} changed={(event) => this.setState({phoneNumber: event.target.value})} />
-                        {/* <Input classes={classes.blood} style={{width: '100%'}} inputType={true} title={"Blood Group"} select={["A", "B", "AB", "O"]}/> */}
+                        <Input classes={classes.blood} style={{width: '100%'}} inputType={true} title={"Admin"} select={["No", "Yes"]} value={this.state.admin} changed={(event) => this.setState({admin: event.target.value})}/>
                     </form>
                     <button className={classes.create} onClick={this.postDataHandler}>{this.props.name} Staff</button>
                 </Scrollbar>

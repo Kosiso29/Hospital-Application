@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 // import classes from './Staff.module.css';
 import classes from '../Patients/Patients.module.css';
@@ -14,17 +15,21 @@ import Card from "../../UI/Card/Card";
 import Table from "../../Components/Table/Table";
 import SearchBox from "../../UI/SearchBox/SearchBox";
 import Button from "../../UI/Button/Button";
+import LoginName from "../../UI/LoginName/LoginName";
 
 class Staff extends Patients {    
     componentDidMount () {
+        if (localStorage.getItem("userId"))
         this.onGetHandler("staff");
     };
     
     render () {
         return(
             <div>
-                <Backdrop show={this.state.openForms} clicked={this.closeFormHandler} />
-                <StaffForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={this.closeFormHandler} post={this.postDataHandler} />
+                {localStorage.getItem("admin") === "Yes" ? null : <Redirect to='/error' />}
+                <LoginName value={localStorage.getItem("firstName")} />
+                <Backdrop show={this.state.openForms} clicked={() => { this.closeFormHandler("staff") }} />
+                <StaffForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={() => { this.closeFormHandler("staff") }} post={this.postDataHandler} />
                 <SearchBox placeholder="Search staff's name, ID" />
                 <Button clicked={(e) => this.openFormHandler(e, 'Add')} value="Add Staff" />
                 <div className={classes.patients}>
@@ -36,7 +41,7 @@ class Staff extends Patients {
                         <h4>Staff list</h4><br/>                    
                         <Scrollbar>
                             <Table
-                                headers={["Name", "Gender", "Email", "Options"]} isLoaded={this.state.isLoaded}
+                                headers={["Name", "Gender", "Email", "Admin", "Options"]} isLoaded={this.state.isLoaded}
                                 rows={this.state.items} patientpic={patientpic}
                                 clicked={(e) => this.openFormHandler(e, 'Edit')} delete={(e) => { this.onDeleteHandler(e, "staff") }} /> {/* <td>{item.jobDescription}</td> */} {/* <td>{item.phoneNumber}</td> */}
                             {this.state.isLoaded ? null : <Spinner />}

@@ -1,0 +1,14 @@
+.loginName {
+    position: absolute;
+    top: 20px;
+    right: 47px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+@media (max-width: 850px) {
+    .loginName {
+        right: 20px;
+        font-size: 24px;
+    }
+}

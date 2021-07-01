@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 import Spinner from '../../UI/Spinner/Spinner';
@@ -13,6 +14,7 @@ import Card from "../../UI/Card/Card";
 import Table from "../../Components/Table/Table";
 import SearchBox from "../../UI/SearchBox/SearchBox";
 import Button from "../../UI/Button/Button";
+import LoginName from "../../UI/LoginName/LoginName";
 // import Patient from './Patient/Patient';
 
 class Patients extends Component {
@@ -24,12 +26,14 @@ class Patients extends Component {
         formId: ""
     }
     
-    componentDidMount () {
+    componentDidMount() {
+        if (localStorage.getItem("userId"))
         this.onGetHandler("patients");
     };
 
-    closeFormHandler = () => {
-        this.setState({openForms: false});
+    closeFormHandler = (input) => {
+        this.setState({ openForms: false });
+        this.onGetHandler(input);
     }
 
     openFormHandler = (e, input) => {
@@ -80,8 +84,10 @@ class Patients extends Component {
     render () {
         return(
             <div>
-                <Backdrop show={this.state.openForms} clicked={this.closeFormHandler} />
-                <PatientsForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={this.closeFormHandler} post={this.postDataHandler} />
+                {localStorage.getItem("userId") ? null : <Redirect to='/error' />}
+                <LoginName value={localStorage.getItem("firstName")} />
+                <Backdrop show={this.state.openForms} clicked={() => { this.closeFormHandler("patients") }} />
+                <PatientsForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={() => { this.closeFormHandler("patients") }} post={this.postDataHandler} />
                 <SearchBox placeholder="Search patient's name, ID" />
                 <Button clicked={(e) => this.openFormHandler(e, 'Add')} value="Add Patient" />
                 <div className={classes.patients}>

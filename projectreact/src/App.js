@@ -11,34 +11,12 @@ import Signin from './Pages/Signin/Signin';
 
 class App extends Component {
 
-  // state = {
-  //   loggedIn: false
-  // }
-
-  // loggedIn = () => {
-  //   console.log('Logged');
-  //   this.setState({loggedIn: true})
-  // }
-
-  // splashScreenHandler = () => {
-  //   console.log('splashScreen');
-  //   setTimeout(() => {
-  //     return <Spinner />
-  //   }, 5000);
-  // }
-
   render () {
 
     return (
       <>
-        {/* {this.state.loggedIn ? <div style={{height: '100vh', width: '100vw', position: 'fixed', zIndex: '10000', backgroundColor: 'rgba(0,0,0,0.5)', paddingTop: '200px', left: '0'}}><Spinner /></div> : null} */}
           <Switch>
             <Route path="/" exact component={Signin} />
-            {/* <Route path='/' exact component={Home} />
-            <Route path='/patients' exact component={Products} />
-            <Route path='/staff' exact component={Reports} />
-            <Route path='/pharmacy' exact component={Pharmacy} /> */}
-            
             <Route path="/patients" exact>
             <Navbar />
               <Patients />
@@ -55,7 +33,9 @@ class App extends Component {
             <Navbar />
               <Dashboard />
             </Route>
-            <Redirect to='/' />
+            <Route path="/error" exact render={() => <h6 style={{fontSize: "16px", margin: "10px 20px"}}>Error: Request failed with status code 403* <br></br>Forbidden Request*</h6>} />
+            <Route path="/NotFound" exact render={() => <h6 style={{fontSize: "16px", margin: "10px 20px"}}>Error: Request failed with status code 404* <br></br>Page not Found*</h6>} />
+            <Redirect to='/NotFound' />
           </Switch>
       </>
     );

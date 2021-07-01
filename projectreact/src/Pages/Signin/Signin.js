@@ -23,6 +23,10 @@ class Signin extends Component {
 
     
     componentDidMount() {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("firstName");
+        localStorage.removeItem("admin");
+        this.props.onAuthVerifyEmail("test@test.com");
         const query = new URLSearchParams(this.props.location.search);
         let userId = '';
         if (query.entries()) {
@@ -55,7 +59,6 @@ class Signin extends Component {
             })
         }
 
-        
     }
 
     
@@ -69,8 +72,10 @@ class Signin extends Component {
         // axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyChQaYngkLZ57bg9r9fmIsyzOueM4ijUvc', data)
         axios.post('/staff/login', data)
             .then(response => {
-                // console.log(response.data)
                 this.setState({submitted: false});
+                localStorage.setItem("userId", response.data.email);
+                localStorage.setItem("firstName", response.data.firstName);
+                localStorage.setItem("admin", response.data.admin);
             })
             .then(() => {
                 // console.log(response.data);
@@ -81,7 +86,6 @@ class Signin extends Component {
                 console.log(String(error));
                 this.setState({error: true, submitted: false, errorValue: String(error)});
             })
-    
     }
 
     createPassword = () => {
@@ -119,7 +123,7 @@ class Signin extends Component {
     }
 
     render(){
-        if (this.state.loggedIn) {
+        if (this.state.loggedIn && localStorage.getItem("userId")) {
             setTimeout(() => {
                 // this.setState({loggedIn: false});
                 // console.log(this.props)

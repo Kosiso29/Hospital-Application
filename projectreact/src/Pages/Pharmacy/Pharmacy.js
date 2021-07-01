@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import classes from './Pharmacy.module.css';
 // import axios from '../../axios';
 import TableButton from '../../UI/TableButton/TableButton';
 import Scrollbar from "../../UI/Scrollbar/Scrollbar";
 import Spinner from "../../UI/Spinner/Spinner";
 import patientpic from "../../assets/images/patientpic.png";
+import LoginName from "../../UI/LoginName/LoginName";
 
 class Pharmacy extends Component {
 
@@ -28,6 +29,8 @@ class Pharmacy extends Component {
     render () {
     return(
         <>
+            {localStorage.getItem("userId") ? null : <Redirect to='/error' />}
+            <LoginName value={localStorage.getItem("firstName")} />
             <div className={classes.searchBox}>
                     <input className={classes.searchTxt} type='text' placeholder="Search Pharmacy's name, ID" />
                     <Link className={classes.searchBtn} to='#'></Link>

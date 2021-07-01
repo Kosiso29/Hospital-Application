@@ -18,6 +18,7 @@ const table = (props) => (
                             <td style={{ display: 'table-cell' }}><img src={props.patientpic} width='25' alt={item.firstName + ' ' + item.lastName} />  <p style={{ display: 'inline-block', verticalAlign: 'top' }}>{item.firstName + ' ' + item.lastName}</p></td>
                             <td>{item.gender}</td>
                             <td>{item.email}</td>
+                            {item.admin ? <td>{item.admin}</td> : null}
                             <td><TableButton clicked={props.clicked} delete={props.delete} /></td>
                         </tr>
                     )) : null}
