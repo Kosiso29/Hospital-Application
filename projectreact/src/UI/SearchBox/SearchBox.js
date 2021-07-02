@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const searchBox = (props) => (
     <div className={classes.searchBox}>
-        <input className={classes.searchTxt} type='text' placeholder={props.placeholder} />
+        <input className={classes.searchTxt} type='text' placeholder={props.placeholder} value={props.value} onChange={props.changed} />
         <Link className={classes.searchBtn} to='#'></Link>        
     </div>
 );

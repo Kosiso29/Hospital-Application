@@ -20,6 +20,8 @@ import LoginName from "../../UI/LoginName/LoginName";
 class Patients extends Component {
     state = {
         items: [],
+        itemsCopy: [],
+        searchValue: "",
         isLoaded: false,
         openForms: false,
         formType: "",
@@ -61,6 +63,29 @@ class Patients extends Component {
             });
     }
 
+    filterTable = (value, state) => {
+        const output = state.filter(item => (
+            item.firstName.toLowerCase().startsWith(value.toLowerCase()) ||
+            item.lastName.toLowerCase().startsWith(value.toLowerCase()) 
+        ));
+        this.setState({ items: output });
+    }
+
+    onSearchHandler = (e) => {
+        this.setState({ searchValue: e.target.value });
+        if (!this.state.itemsCopy.length) this.setState(prevState => ({ itemsCopy: prevState.items }));
+        console.log(this.state.searchValue, e.target.value);
+
+        if (this.state.searchValue.length >= e.target.value.length) {
+            this.filterTable(e.target.value, this.state.itemsCopy)
+        } else {
+            this.filterTable(e.target.value, this.state.items)
+        }
+
+        if (e.target.value === "") this.setState(prevState => ({ items: prevState.itemsCopy, itemsCopy: [] }));
+        console.log(e.target.value, this.state.items, this.state.itemsCopy);
+    }
+
     onEditHandler = (e) => {
         e.target.nextSibling.style.display === "none" ? e.target.nextSibling.style.display = "block" : e.target.nextSibling.style.display = "none";
         console.log('editHandler', this.state.editTable, e.target.textContent, e.target.nextSibling.style.display);
@@ -88,7 +113,7 @@ class Patients extends Component {
                 <LoginName value={localStorage.getItem("firstName")} />
                 <Backdrop show={this.state.openForms} clicked={() => { this.closeFormHandler("patients") }} />
                 <PatientsForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={() => { this.closeFormHandler("patients") }} post={this.postDataHandler} />
-                <SearchBox placeholder="Search patient's name, ID" />
+                <SearchBox placeholder="Search patient's name, ID" value={this.state.searchValue} changed={(e) => {this.onSearchHandler(e)}} />
                 <Button clicked={(e) => this.openFormHandler(e, 'Add')} value="Add Patient" />
                 <div className={classes.patients}>
                     <Card src={process.env.PUBLIC_URL + "/assets/img/visits.png"} number="17" value="Average Visits"/>

@@ -30,7 +30,7 @@ class Staff extends Patients {
                 <LoginName value={localStorage.getItem("firstName")} />
                 <Backdrop show={this.state.openForms} clicked={() => { this.closeFormHandler("staff") }} />
                 <StaffForms show={this.state.openForms} name={this.state.formType} id={this.state.formId} clicked={() => { this.closeFormHandler("staff") }} post={this.postDataHandler} />
-                <SearchBox placeholder="Search staff's name, ID" />
+                <SearchBox placeholder="Search staff's name, ID" value={this.state.searchValue} changed={(e) => {this.onSearchHandler(e)}} />
                 <Button clicked={(e) => this.openFormHandler(e, 'Add')} value="Add Staff" />
                 <div className={classes.patients}>
                     <Card src={process.env.PUBLIC_URL + "/assets/img/doctor.png"} number="45" value="Nurses"/>
